@@ -5,7 +5,7 @@ class Genre(Model):
     name = CharField(max_length=128)
 
     def __str__(self):
-        return f'Genre with id={self.id}, name={self.name}'
+        return f'Genre #{self.id} name={self.name}'
 
 
 class Movie(Model):
@@ -17,4 +17,4 @@ class Movie(Model):
     genre = ForeignKey(Genre, on_delete=DO_NOTHING)
 
     def __str__(self):
-        return f'Movie with id={self.id}'
+        return f'Movie #{self.id} title={self.title}, rating={self.rating}, genre={self.genre.name}'

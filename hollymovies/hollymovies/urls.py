@@ -18,7 +18,7 @@ from django.urls import path
 
 # Aplicatia Viewer
 from viewer.models import Genre, Movie
-from viewer.views import hello
+from viewer.views import hello, hello_genre
 
 admin.site.register(Genre)
 admin.site.register(Movie)
@@ -26,7 +26,7 @@ admin.site.register(Movie)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', hello),
-    path('hello/<genre>', hello),
+    path('hello/<genre>', hello_genre),
 ]
 
 
