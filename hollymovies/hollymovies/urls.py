@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+# Aplicatia Viewer
+from viewer.models import Genre, Movie
 from viewer.views import hello
 
-# http://127.0.0.1:8000/hello/comedy
+admin.site.register(Genre)
+admin.site.register(Movie)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
