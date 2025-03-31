@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html>
-    <body>
-        <h1>Welcome to HollyMovies!</h1>
-        <h3>Welcome to HollyMovies!</h3>
-        {% for movie in movies %}
-            <p>{{ movie }}</p>
-        {% endfor %}
-    </body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<link rel="stylesheet" href="../../static/styles/hello.css">
+</link>
+<div class="container">
+    {% for movie in movies %}
+    <div class="movie-card">
+        <div class="movie__title">{{movie.title}}</div>
+        <div class="movie__description">{{movie.description}}</div>
+        <div class="movie__rating-genre">
+            <div class="movie__rating">
+                <img src="../../static/images/star.svg" width="14" class="movie__star" />
+                <span>{{movie.rating}}</span>
+            </div>
+            <div class="movie__genre">{{movie.genre.name}}</div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

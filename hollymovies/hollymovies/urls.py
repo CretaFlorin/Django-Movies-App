@@ -18,14 +18,15 @@ from django.urls import path
 
 # Aplicatia Viewer
 from viewer.models import Genre, Movie
-from viewer.views import hello, hello_genre
+from viewer.views import hello, hello_genre, MoviesView
 
 admin.site.register(Genre)
 admin.site.register(Movie)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', hello),
+    # path('hello/', hello),
+    path('hello/', MoviesView.as_view()),
     path('hello/<genre>', hello_genre),
 ]
 
