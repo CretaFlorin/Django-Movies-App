@@ -84,12 +84,8 @@ class MovieUpdateView(UpdateView):
         return super().form_invalid(form)
     
 class MovieDeleteView(DeleteView):
-    template_name = 'movie_form.html'
-    form_class = MovieForm
+    template_name = 'movie_confirm_delete.html'
     model = Movie
     success_url = reverse_lazy('movies')
     
-    def form_invalid(self, form):
-        LOGGER.warning('User provided invalid data.')
-        return super().form_invalid(form)
     

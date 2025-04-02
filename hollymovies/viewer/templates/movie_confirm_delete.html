@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="../../static/styles/hello.css">
+</link>
+<form method="post">
+    {% csrf_token %}
+    <p>Esti sigur ca vrei sa stergi filmul <b>{{object.title}}</b> ?</p>
+    <input type="submit" value="Submit">
+</form>
+{% endblock %} 
