@@ -44,3 +44,31 @@
 .movie__genre {
     border-radius: 5px;
 }
+
+
+.movie__trash__container {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgb(121, 194, 225); */
+}
+
+.movie__trash {
+    width: 18px;
+    fill: rgb(255, 255, 255);
+    transition: width 0.2s linear;
+}
+
+.movie__trash:hover {
+    width: 22px;
+    fill: rgb(255, 0, 0);
+    cursor: pointer;
+}
+
+.movie__title-trash {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

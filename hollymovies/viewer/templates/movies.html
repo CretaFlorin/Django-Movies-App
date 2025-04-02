@@ -8,8 +8,18 @@
 <div class="container">
     {% for movie in object_list %}
     <div class="movie-card">
-        <div class="movie__title">{{movie.title}}</div>
+        <div class="movie__title-trash">
+            <div class="movie__title">{{movie.title}}</div>
+            <div class="movie__trash__container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="movie__trash" fill="black">
+                    <path
+                        d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" />
+                </svg>
+            </div>
+        </div>
+
         <div class="movie__description">{{movie.description}}</div>
+
         <div class="movie__rating-genre">
             <div class="movie__rating">
                 <img src="../../static/images/star.svg" width="14" class="movie__star" />
