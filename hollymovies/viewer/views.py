@@ -66,7 +66,7 @@ class MoviesView(ListView):
 class MovieCreateView(CreateView):
     template_name = 'movie_form.html'
     form_class = MovieForm
-    success_url = reverse_lazy('movie_create')
+    success_url = reverse_lazy('movies')
     
     def form_invalid(self, form):
         LOGGER.warning('User provided invalid data.')

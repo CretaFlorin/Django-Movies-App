@@ -7,6 +7,9 @@
 </link>
 <div class="container">
     <div>There are {{object_list|length}} movie{{object_list|length|pluralize}}.</div>
+    <a href="{% url 'movie_create' %} ">
+        <button class="Create_button">Add movie</button>
+    </a>
     {% for movie in object_list %}
     <div class="movie-card">
         <div class="movie__title-trash">
