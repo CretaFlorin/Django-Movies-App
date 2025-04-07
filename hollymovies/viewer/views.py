@@ -3,10 +3,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from viewer.forms import MovieForm
-from viewer.models import Movie
+from viewer.models import Movie, Genre
 from django.views import View
 from django.views.generic import TemplateView, ListView, FormView, CreateView, UpdateView, DeleteView
 from logging import getLogger
+
 
 LOGGER = getLogger()
 
@@ -19,12 +20,20 @@ LOGGER = getLogger()
 #     )
 
 # Class-Based View
-# class MoviesView(View):
-#     def get(self, request):
-#         return render(
-#             request, template_name='hello.html',
-#             context={'movies': Movie.objects.all()}
-#         )
+class MoviesView(View):
+    def get(self, request):
+        genre=request.GET.get("genre", "")
+
+        if genre:
+            movies=Movie.objects.filter(genre__name=genre)
+        else:
+            movies=Movie.objects.all()
+
+
+        return render(
+            request, template_name='movies.html',
+            context={'movies': movies , 'genres': Genre.objects.all()}
+        )
         
 # TemplateView Class
 # class MoviesView(TemplateView):
@@ -33,9 +42,10 @@ LOGGER = getLogger()
     
         
 # ListView Class
-class MoviesView(ListView):
-    template_name = 'movies.html'
-    model = Movie
+# class MoviesView(ListView):
+#     template_name = 'movies.html'
+#     model = Movie
+#     extra_context = {'genres': Genre.objects.all()}
             
             
 # FormView Class
@@ -87,5 +97,4 @@ class MovieDeleteView(DeleteView):
     template_name = 'movie_confirm_delete.html'
     model = Movie
     success_url = reverse_lazy('movies')
-    
     

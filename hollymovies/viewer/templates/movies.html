@@ -7,6 +7,17 @@
 </link>
 <div class="container">
     <div>There are {{object_list|length}} movie{{object_list|length|pluralize}}.</div>
+    <form>
+        <span>Filtre by genre</span>
+        <select id="genre_filtre">
+
+            {% for genre in genres %}
+            <option value="{{genre.name}}">{{genre.name}}</option>
+            {% endfor %}
+        </select>
+
+    </form>
+
     <a href="{% url 'movie_create' %} ">
         <button class="Create_button">Add movie</button>
     </a>
@@ -46,4 +57,17 @@
 
     {% endfor %}
 </div>
+
+<script>
+
+    const element=document.getElementById("genre_filtre") 
+    console.log(element)
+    element.addEventListener("change", function(){
+        console.log("Genul a fost schimbat!", this.value)
+        window.location.href='/movies/'+this.value
+    }) 
+    
+</script>
 {% endblock %}
+
+    
