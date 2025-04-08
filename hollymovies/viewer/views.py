@@ -21,18 +21,18 @@ LOGGER = getLogger()
 
 # Class-Based View
 class MoviesView(View):
-    def get(self, request):
-        genre=request.GET.get("genre", "")
-
-        if genre:
-            movies=Movie.objects.filter(genre__name=genre)
+    def get(self, request, genre=""):
+        
+        if genre and genre.lower() != 'all':
+            movies=Movie.objects.filter(genre__name__iexact=genre)
         else:
             movies=Movie.objects.all()
 
-
+        print("------------------------------------")
+        print(movies)
         return render(
             request, template_name='movies.html',
-            context={'movies': movies , 'genres': Genre.objects.all()}
+            context={'object_list': movies , 'genres': Genre.objects.all(), 'genre_filter':genre}
         )
         
 # TemplateView Class
