@@ -33,4 +33,5 @@ urlpatterns = [
     path('movies/<genre>', MoviesView.as_view(), name='movies_filtered'),
     path('accounts/login/', SubmittableLoginView.as_view(), name='login'),
     path('accounts/logout/', SubmittableLogoutView.as_view(), name='logout'),
+    path('', MoviesView.as_view(), name='movies'),
 ]
