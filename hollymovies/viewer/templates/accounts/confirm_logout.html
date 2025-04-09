@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <p>Esti sigur ca vrei sa te deloghezi?</p>
+    <input type="submit" value="Submit">
+</form>
+{% endblock %} 

@@ -10,7 +10,7 @@ from logging import getLogger
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 
 LOGGER = getLogger()
 
@@ -101,7 +101,15 @@ class MovieDeleteView(DeleteView):
     success_url = reverse_lazy('movies')
     
 
-
 class SubmittableLoginView(LoginView):
     template_name = 'accounts/login.html'
-    # success_url = reverse_lazy('movies')
+    
+
+class SubmittableLogoutView(LoginRequiredMixin, View):
+    template_name = 'accounts/confirm_logout.html'
+    
+    def get(self, request):
+        return render(request, self.template_name)
+    
+    def post(self, request):
+        return (LogoutView.as_view())(request)

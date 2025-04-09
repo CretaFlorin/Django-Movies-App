@@ -18,9 +18,8 @@ from django.urls import path
 
 # Aplicatia Viewer
 from viewer.models import Genre, Movie
-from viewer.views import MoviesView, MovieCreateView, MovieUpdateView, MovieDeleteView, SubmittableLoginView
+from viewer.views import MoviesView, MovieCreateView, MovieUpdateView, MovieDeleteView, SubmittableLoginView,SubmittableLogoutView
 
-from django.contrib.auth.views import LoginView
 
 admin.site.register(Genre)
 admin.site.register(Movie)
@@ -32,7 +31,6 @@ urlpatterns = [
     path('movie/update/<pk>', MovieUpdateView.as_view(), name='movie_update'),
     path('movie/delete/<pk>', MovieDeleteView.as_view(), name='movie_delete'),
     path('movies/<genre>', MoviesView.as_view(), name='movies_filtered'),
-    path('accounts/login/', SubmittableLoginView.as_view(), name='login')
+    path('accounts/login/', SubmittableLoginView.as_view(), name='login'),
+    path('accounts/logout/', SubmittableLogoutView.as_view(), name='logout'),
 ]
-
-
