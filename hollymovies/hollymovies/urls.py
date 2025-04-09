@@ -18,7 +18,9 @@ from django.urls import path
 
 # Aplicatia Viewer
 from viewer.models import Genre, Movie
-from viewer.views import MoviesView, MovieCreateView, MovieUpdateView, MovieDeleteView, SubmittableLoginView,SubmittableLogoutView
+from viewer.views import (MoviesView, MovieCreateView, 
+                          MovieUpdateView, MovieDeleteView, SubmittableLoginView,
+                          SubmittableLogoutView, PasswordResetView)
 
 
 admin.site.register(Genre)
@@ -34,4 +36,5 @@ urlpatterns = [
     path('accounts/login/', SubmittableLoginView.as_view(), name='login'),
     path('accounts/logout/', SubmittableLogoutView.as_view(), name='logout'),
     path('', MoviesView.as_view(), name='movies'),
+    path('password_change/', PasswordResetView.as_view(), name='password_change')
 ]

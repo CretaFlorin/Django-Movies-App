@@ -10,7 +10,7 @@ from logging import getLogger
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 
 LOGGER = getLogger()
 
@@ -113,3 +113,6 @@ class SubmittableLogoutView(LoginRequiredMixin, View):
     
     def post(self, request):
         return (LogoutView.as_view())(request)
+
+class PasswordResetView(LoginRequiredMixin, PasswordChangeView):
+    template_name = 'accounts/password_reset.html'
