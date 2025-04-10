@@ -1,100 +1,156 @@
 .container {
-    width: 100%;
-    min-width: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  .movie-card {
-    width: 350px;
-    height: inherit;
-    background: #1e1e1e;
-    padding: 20px;
-    border-radius: 8px;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .movie__title {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  .movie__description {
-    font-size: 14px;
-  }
-  
-  .movie__rating-genre {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-size: 18px;
-  }
-  
-  .movie__rating {
-    font-weight: bold;
-    color: gold;
-  }
-  
-  .movie__genre {
-    border-radius: 5px;
-  }
-  
-  .movie__trash__container {
-    width: 24px;
-    height: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: rgb(121, 194, 225); */
-  }
-  
-  .movie__trash {
-    width: 18px;
-    fill: rgb(255, 255, 255);
-    transition: width 0.2s linear;
-  }
-  
-  .movie__trash:hover {
-    width: 22px;
-    fill: rgb(255, 0, 0);
-    cursor: pointer;
-  }
-  
-  .movie__title-trash {
-    height: 24px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  
-  .movie__edit_container {
-    width: 24px;
-    height: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: rgb(121, 194, 225); */
-  }
-  
-  .movie__edit {
-    width: 18px;
-    fill: rgb(255, 255, 255);
-    transition: width 0.2s linear;
-  }
-  
-  .movie__edit:hover {
-    width: 22px;
-    fill: yellow;
-    cursor: pointer;
-  }
-  
-  .trash__edit__container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
+  width: 100%;
+  min-width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.movie-card {
+  width: 350px;
+  height: inherit;
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.movie__title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.movie__description {
+  font-size: 14px;
+}
+
+.movie__rating-genre {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 18px;
+}
+
+.movie__rating {
+  font-weight: bold;
+  color: gold;
+}
+
+.movie__genre {
+  border-radius: 5px;
+}
+
+.movie__trash__container {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: rgb(121, 194, 225); */
+}
+
+.movie__trash {
+  width: 18px;
+  fill: rgb(255, 255, 255);
+  transition: width 0.2s linear;
+}
+
+.movie__trash:hover {
+  width: 22px;
+  fill: rgb(255, 0, 0);
+  cursor: pointer;
+}
+
+.movie__title-trash {
+  height: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.movie__edit_container {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: rgb(121, 194, 225); */
+}
+
+.movie__edit {
+  width: 18px;
+  fill: rgb(255, 255, 255);
+  transition: width 0.2s linear;
+}
+
+.movie__edit:hover {
+  width: 22px;
+  fill: yellow;
+  cursor: pointer;
+}
+
+.trash__edit__container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* --------- DIALOG--------- */
+
+
+.dialog__container {
+  display: none;
+
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+
+  background-color: rgba(200, 200, 200, 0.4);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s  ease, visibility 0.5s ease;
+}
+
+.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.dialog {
+  width: 560px;
+  height: 440px;
+
+  filter: none !important;
+  padding: 40px;
+  display: flex;
+
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  box-shadow: 0 0 20px black;
+  z-index: 20;
+
+  position: relative;
+}
+
+.dialog__button {
+  position: absolute;
+  width: auto;
+  height: 20px;
+
+  cursor: pointer;
+
+  right: 10px;
+  top: 10px;
+}

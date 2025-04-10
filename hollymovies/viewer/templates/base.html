@@ -8,7 +8,7 @@
     </link>
 </head>
 
-<body>
+<body id="body">
     <div class="navbar">
         <div class="navbar__container">
             <span class="navbar__title">HollyMovies</span>
@@ -27,3 +27,10 @@
 </body>
 
 </html>
+
+<script>
+   const body_element = document.getElementById("body")
+   body_element.addEventListener("contextmenu", function (evt) {
+        evt.preventDefault();
+    })
+</script>

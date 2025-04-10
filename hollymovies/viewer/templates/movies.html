@@ -18,9 +18,9 @@
         </select>
     </form>
 
-    <a href="{% url 'movie_create' %} ">
-        <button class="Create_button">Add movie</button>
-    </a>
+    <!-- <a href="{% url 'movie_create' %} "> -->
+    <button onclick="openDialog()" class="Create_button">Add movie</button>
+    <!-- </a> -->
     {% for movie in object_list %}
     <div class="movie-card">
         <div class="movie__title-trash">
@@ -56,16 +56,44 @@
     </div>
 
     {% endfor %}
+
+    <div onclick="closeDialog()" id="dialog_container" class="dialog__container">
+        <div id="dialog"  class="dialog">
+            <span onclick="closeDialog()" class="dialog__button">Close</span>
+            <p>This is a Dialog!</p>
+        </div>
+    </div>
+
 </div>
 
 <script>
-
     const element = document.getElementById("genre_filtre")
     console.log(element)
     element.addEventListener("change", function () {
-        console.log("Genul a fost schimbat!", this.value)
         window.location.href = '/movies/' + this.value
     })
+
+    const dialog = document.getElementById("dialog")
+    dialog.addEventListener("click", function (evt) {
+        evt.stopPropagation();
+    })
+
+    const openDialog = () => {
+        const dialogElem = document.getElementById("dialog_container")
+        if (dialogElem) {
+            dialogElem.classList.add("active")
+        }
+    }
+
+    const closeDialog = (evt) => {
+        const dialogElem = document.getElementById("dialog_container")
+        if (dialogElem) {
+            dialogElem.classList.remove("active")
+        }
+
+        // console.log(evt)
+    }
+
 
 </script>
 {% endblock %}
