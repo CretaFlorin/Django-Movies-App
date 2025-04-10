@@ -30,11 +30,27 @@ body {
 }
 
 .navbar__title {
+    width: 130px;
     font-size: 22px;
     color: white;
+    display: flex;
+    justify-content: flex-start;
 }
 
 /* Content */
+
+.hello__message {
+    width: 130px;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar__logout {
+    width: 130px;
+    display: flex;
+    justify-content: flex-end;
+}
 
 .content {
     width: 100%;
