@@ -135,3 +135,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL = 'login'
 LOGIN_REDIRECT_URL = 'movies'
+
+SESSION_COOKIE_AGE = 3600 # valoare in secunde,durata sesiune

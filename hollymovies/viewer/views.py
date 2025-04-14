@@ -9,6 +9,7 @@ from django.views.generic import TemplateView, ListView, FormView, CreateView, U
 from logging import getLogger
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
 
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 
@@ -26,12 +27,14 @@ LOGGER = getLogger()
 
 # Class-Based View
 class MoviesView(LoginRequiredMixin, View):
-    def get(self, request, genre=""):      
+    def get(self, request, genre=""): 
+        search = request.GET.get("q")
+           
         if genre and genre.lower() != 'all':
             movies=Movie.objects.filter(genre__name__iexact=genre)
         else:
             movies=Movie.objects.all()
-
+        movies = movies.filter(Q(title__icontains = search) & Q(description__icontains = search))
         return render(
             request, template_name='movies.html',
             context={'object_list': movies , 'genres': Genre.objects.all(), 'genre_filter':genre}
