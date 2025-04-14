@@ -28,13 +28,20 @@ LOGGER = getLogger()
 # Class-Based View
 class MoviesView(LoginRequiredMixin, View):
     def get(self, request, genre=""): 
-        search = request.GET.get("q")
+        search = request.GET.get("q") or ''
            
+        movies = []
+        
+        
+        # Filtrare dupa gen
         if genre and genre.lower() != 'all':
-            movies=Movie.objects.filter(genre__name__iexact=genre)
+            movies = Movie.objects.filter(genre__name__iexact=genre)
         else:
-            movies=Movie.objects.all()
-        movies = movies.filter(Q(title__icontains = search) & Q(description__icontains = search))
+            movies = Movie.objects.all()
+            
+        # Filtrare dupa search value, pe titlu si descriere
+        movies = movies.filter(Q(title__icontains = search) | Q(description__icontains = search))
+        
         return render(
             request, template_name='movies.html',
             context={'object_list': movies , 'genres': Genre.objects.all(), 'genre_filter':genre}
