@@ -44,7 +44,9 @@ class MoviesView(LoginRequiredMixin, View):
         
         return render(
             request, template_name='movies.html',
-            context={'object_list': movies , 'genres': Genre.objects.all(), 'genre_filter':genre}
+            context={'object_list': movies , 'genres': Genre.objects.all(), 'genre_filter':genre, 
+            'search_value': search}
+
         )
         
 # TemplateView Class

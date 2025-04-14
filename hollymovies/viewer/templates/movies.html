@@ -18,7 +18,8 @@
                 {% endfor %}
             </select>
         </div>
-        <input name="q" class="genre_search" type="text" placeholder="Search...">
+        <input name="q" class="genre_search" type="text" placeholder="Search..." value="{{search_value}}"> 
+        <!-- putem folosi si value="{{request.GET.q}}" -->
     </form>
 
     <!-- <a href="{% url 'movie_create' %} "> -->
