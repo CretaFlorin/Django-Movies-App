@@ -7,15 +7,18 @@
 </link>
 <div class="container">
     <div>There are {{object_list|length}} movie{{object_list|length|pluralize}}.</div>
-    <form>
-        <span>Filtre by genre</span>
-        <select id="genre_filtre">
-            <option value="All">All</option>
-            {% for genre in genres %}
-            <option value="{{ genre.name }}" {% if genre.name == genre_filter %}selected{% endif %}>{{ genre.name }}
-            </option>
-            {% endfor %}
-        </select>
+    <form class="filter-search__form">
+        <div>
+            <span>Filtre by genre</span>
+            <select id="genre_filtre">
+                <option value="All">All</option>
+                {% for genre in genres %}
+                <option value="{{ genre.name }}" {% if genre.name == genre_filter %}selected{% endif %}>{{ genre.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <input name="q" class="genre_search" type="text" placeholder="Search...">
     </form>
 
     <!-- <a href="{% url 'movie_create' %} "> -->
@@ -58,7 +61,7 @@
     {% endfor %}
 
     <div onclick="closeDialog()" id="dialog_container" class="dialog__container">
-        <div id="dialog"  class="dialog">
+        <div id="dialog" class="dialog">
             <span onclick="closeDialog()" class="dialog__button">Close</span>
             <p>This is a Dialog!</p>
         </div>

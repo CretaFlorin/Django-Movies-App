@@ -154,3 +154,13 @@
   right: 10px;
   top: 10px;
 }
+
+.genre_search {
+  width: 150px;
+}
+
+.filter-search__form{
+  width: 390px;
+  display: flex;
+  justify-content: space-between;
+}
